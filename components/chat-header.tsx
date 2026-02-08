@@ -14,10 +14,12 @@ function PureChatHeader({
   chatId,
   selectedVisibilityType,
   isReadonly,
+  showLogo = false,
 }: {
   chatId: string;
   selectedVisibilityType: VisibilityType;
   isReadonly: boolean;
+  showLogo?: boolean;
 }) {
   const router = useRouter();
   const { open } = useSidebar();
@@ -27,6 +29,23 @@ function PureChatHeader({
   return (
     <header className="sticky top-0 flex items-center gap-2 bg-background px-2 py-1.5 md:px-2">
       <SidebarToggle />
+
+      {/* WFO Logo - shows when background logo is hidden */}
+      <div
+        className={`flex items-center transition-all duration-300 ${
+          showLogo ? "w-8 opacity-100" : "w-0 opacity-0"
+        } overflow-hidden`}
+      >
+        <img
+          src="/images/LogoILike.png"
+          alt="WFO"
+          className="h-6 w-auto object-contain"
+          style={{
+            filter:
+              "brightness(0) saturate(100%) invert(68%) sepia(75%) saturate(800%) hue-rotate(190deg) brightness(105%) contrast(95%)",
+          }}
+        />
+      </div>
 
       {(!open || windowWidth < 768) && (
         <Button
@@ -71,6 +90,7 @@ export const ChatHeader = memo(PureChatHeader, (prevProps, nextProps) => {
   return (
     prevProps.chatId === nextProps.chatId &&
     prevProps.selectedVisibilityType === nextProps.selectedVisibilityType &&
-    prevProps.isReadonly === nextProps.isReadonly
+    prevProps.isReadonly === nextProps.isReadonly &&
+    prevProps.showLogo === nextProps.showLogo
   );
 });
