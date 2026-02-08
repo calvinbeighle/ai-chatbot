@@ -20,7 +20,7 @@ export default function Page() {
     login,
     {
       status: "idle",
-    }
+    },
   );
 
   const { update: updateSession } = useSession();
@@ -53,6 +53,15 @@ export default function Page() {
     <div className="flex h-dvh w-screen items-start justify-center bg-background pt-12 md:items-center md:pt-0">
       <div className="flex w-full max-w-md flex-col gap-12 overflow-hidden rounded-2xl">
         <div className="flex flex-col items-center justify-center gap-2 px-4 text-center sm:px-16">
+          <img
+            src="/images/LogoILike.png"
+            alt="WFO"
+            className="mb-4 h-16 w-auto object-contain"
+            style={{
+              filter:
+                "brightness(0) saturate(100%) invert(68%) sepia(75%) saturate(800%) hue-rotate(190deg) brightness(105%) contrast(95%)",
+            }}
+          />
           <h3 className="font-semibold text-xl dark:text-zinc-50">Sign In</h3>
           <p className="text-gray-500 text-sm dark:text-zinc-400">
             Use your email and password to sign in
